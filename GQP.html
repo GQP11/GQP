@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GQP | Great Quality Products</title>
+    
+    <!-- External Dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+        
+        :root {
+            --accent-color: rgba(148, 163, 184, 0.5);
+            --bg-dark: #000000;
+            --card-bg: #111111;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Background with Sand Texture Overlay - Direct reference to provided screenshot aesthetic */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .oswald {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #94a3b8;
+        }
+
+        .active-nav {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 2px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .underline-accent {
+            width: 80%;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 20px auto 0;
+        }
+
+        /* Content Management */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid #222;
+            transition: border-color 0.3s ease;
+        }
+
+        .product-card:hover {
+            border-color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="hero-bg relative">
+        <nav class="flex items-center justify-between px-6 md:px-12 py-6">
+            <div class="text-2xl font-bold oswald tracking-widest cursor-pointer" onclick="showPage('home')">GQP</div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-2xl" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="nav-menu" class="hidden md:flex items-center gap-4 lg:gap-10 oswald font-light">
+                <span onclick="showPage('home')" class="nav-link active-nav">Home</span>
+                <span onclick="showPage('laptops')" class="nav-link">Laptops/PC</span>
+                <span onclick="showPage('playstations')" class="nav-link">Playstaions</span>
+                <span onclick="showPage('iphones')" class="nav-link">Iphones</span>
+                <span onclick="showPage('custom')" class="nav-link">Custom Order</span>
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="flex-grow flex flex-col items-center justify-center text-center px-4">
+            <h1 class="hero-title oswald">
+                FIND GREAT QUALITY<br>PRODUCTS HERE
+            </h1>
+            <div class="underline-accent"></div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        
+        <!-- Home Page -->
+        <section id="home" class="page-content active">
+            <h2 class="text-3xl oswald mb-8 border-b border-zinc-800 pb-4">Welcome to GQP</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="product-card p-8 rounded-sm">
+                    <h3 class="text-xl font-bold mb-4 text-zinc-100">Our Mission</h3>
+                    <p class="text-zinc-400 leading-relaxed">We source only the highest grade tech for our community. From high-end gaming setups to professional Apple workstations, GQP ensures quality is never compromised. Every unit is tested for peak performance before listing.</p>
+                </div>
+                <div class="product-card p-8 rounded-sm">
+                    <h3 class="text-xl font-bold mb-4 text-zinc-100">Latest Arrivals</h3>
+                    <p class="text-zinc-400 leading-relaxed">The newest iPhone 15 Pro series and PlayStation 5 Slim models have just landed. Check the dedicated tabs to see current stock levels and pricing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Laptops Page -->
+        <section id="laptops" class="page-content">
+            <h2 class="text-3xl oswald mb-8">Laptops & PCs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="product-card p-4">
+                    <div class="aspect-video bg-zinc-800 mb-4 flex items-center justify-center text-zinc-500">
+                        <i class="fas fa-laptop text-4xl"></i>
+                    </div>
+                    <h4 class="font-bold">MacBook Pro M3</h4>
+                    <p class="text-zinc-500 text-sm">Space Black, 16GB RAM</p>
+                    <p class="mt-4 text-blue-400 font-bold">$1,599</p>
+                </div>
+                <div class="product-card p-4">
+                    <div class="aspect-video bg-zinc-800 mb-4 flex items-center justify-center text-zinc-500">
+                        <i class="fas fa-desktop text-4xl"></i>
+                    </div>
+                    <h4 class="font-bold">Custom RTX Build</h4>
+                    <p class="text-zinc-500 text-sm">i9-14900K | RTX 4090</p>
+                    <p class="mt-4 text-blue-400 font-bold">$3,200</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playstations Page -->
+        <section id="playstations" class="page-content">
+            <h2 class="text-3xl oswald mb-8">Playstaions</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="product-card p-4">
+                    <div class="aspect-video bg-zinc-800 mb-4 flex items-center justify-center text-zinc-500">
+                        <i class="fab fa-playstation text-4xl"></i>
+                    </div>
+                    <h4 class="font-bold">PS5 Slim Console</h4>
+                    <p class="text-zinc-500 text-sm">Digital & Disc Editions</p>
+                    <p class="mt-4 text-blue-400 font-bold">In Stock</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Iphones Page -->
+        <section id="iphones" class="page-content">
+            <h2 class="text-3xl oswald mb-8">Iphones</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="product-card p-4">
+                    <div class="aspect-video bg-zinc-800 mb-4 flex items-center justify-center text-zinc-500">
+                        <i class="fas fa-mobile-alt text-4xl"></i>
+                    </div>
+                    <h4 class="font-bold">iPhone 15 Pro Max</h4>
+                    <p class="text-zinc-500 text-sm">Natural Titanium, 256GB</p>
+                    <p class="mt-4 text-blue-400 font-bold">$1,199</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Order Page -->
+        <section id="custom" class="page-content">
+            <h2 class="text-3xl oswald mb-8">Custom Order</h2>
+            <div class="max-w-lg product-card p-8">
+                <p class="text-zinc-400 mb-6 italic">Looking for something specific? Let us know and we'll source it for you.</p>
+                <form id="customOrderForm" onsubmit="handleForm(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm mb-2 uppercase oswald tracking-wider">Full Name</label>
+                        <input type="text" required class="w-full bg-black border border-zinc-700 p-3 rounded-sm focus:border-blue-500 outline-none transition">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm mb-2 uppercase oswald tracking-wider">Email/Contact</label>
+                        <input type="text" required class="w-full bg-black border border-zinc-700 p-3 rounded-sm focus:border-blue-500 outline-none transition">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm mb-2 uppercase oswald tracking-wider">Product Requirements</label>
+                        <textarea required placeholder="Specify model, specs, and budget..." class="w-full bg-black border border-zinc-700 p-3 rounded-sm h-32 focus:border-blue-500 outline-none transition"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-white text-black font-bold py-3 px-8 hover:bg-zinc-300 transition uppercase oswald">Submit Request</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-zinc-900 text-center text-zinc-600 text-sm mt-20">
+        <div class="oswald tracking-widest mb-4 text-zinc-400 text-lg">GQP</div>
+        <div class="flex justify-center gap-6 mb-6 text-xl">
+            <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-white transition"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>&copy; 2026 Great Quality Products. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            
+            // Handle Navigation UI
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav');
+                if(link.textContent.toLowerCase().includes(pageId === 'home' ? 'home' : pageId.substring(0,3))) {
+                    link.classList.add('active-nav');
+                }
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 400, behavior: 'smooth' });
+            }
+
+            // Close mobile menu if open
+            if(window.innerWidth < 768) {
+                const menu = document.getElementById('nav-menu');
+                menu.classList.add('hidden');
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex', 'flex-col', 'absolute', 'top-20', 'right-6', 'bg-zinc-900', 'p-6', 'rounded-lg', 'border', 'border-zinc-800', 'z-50', 'w-64');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex', 'flex-col', 'absolute', 'top-20', 'right-6', 'bg-zinc-900', 'p-6', 'rounded-lg', 'border', 'border-zinc-800', 'z-50', 'w-64');
+            }
+        }
+
+        function handleForm(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.textContent;
+            btn.textContent = "SENDING...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert('Success! Your custom order request has been logged. Our team will contact you shortly.');
+                e.target.reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
