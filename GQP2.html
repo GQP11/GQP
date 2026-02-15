@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GQP | Great Quality Products</title>
+    
+    <!-- External Dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+        
+        :root {
+            --accent-color: rgba(148, 163, 184, 0.5);
+            --bg-dark: #000000;
+            --card-bg: #111111;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Background - Updated to high-tech aesthetic */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            height: 65vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .oswald {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #94a3b8;
+        }
+
+        .active-nav {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 2px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .underline-accent {
+            width: 80%;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 20px auto 0;
+        }
+
+        /* Content Management */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            border-color: #444;
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background-color: #1a1a1a;
+        }
+
+        .qr-container {
+            background: linear-gradient(135deg, #2AABEE, #229ED9);
+            padding: 20px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="hero-bg relative">
+        <nav class="flex items-center justify-between px-6 md:px-12 py-6">
+            <div class="text-2xl font-bold oswald tracking-widest cursor-pointer" onclick="showPage('home')">GQP</div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-2xl" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="nav-menu" class="hidden md:flex items-center gap-4 lg:gap-10 oswald font-light">
+                <span onclick="showPage('home')" class="nav-link active-nav">Home</span>
+                <span onclick="showPage('laptops')" class="nav-link">Laptops/PC</span>
+                <span onclick="showPage('playstations')" class="nav-link">Playstaions</span>
+                <span onclick="showPage('iphones')" class="nav-link">Iphones</span>
+                <span onclick="showPage('custom')" class="nav-link">Custom Order</span>
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="flex-grow flex flex-col items-center justify-center text-center px-4">
+            <h1 class="hero-title oswald">
+                FIND GREAT QUALITY<br>PRODUCTS HERE
+            </h1>
+            <div class="underline-accent"></div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        
+        <!-- Home Page -->
+        <section id="home" class="page-content active">
+            <h2 class="text-3xl oswald mb-8 border-b border-zinc-800 pb-4">Our Premium Selection</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Featured iPhone -->
+                <div class="product-card rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&q=80&w=800" alt="iPhone 17 Pro Max" class="product-img">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">iPhone 17 Pro Max</h3>
+                        <p class="text-zinc-400 text-sm">Experience the future of mobile technology with the latest Pro Max series.</p>
+                        <button onclick="showPage('iphones')" class="mt-4 text-sm uppercase font-bold tracking-widest text-blue-400 hover:text-white transition">Explore Phones</button>
+                    </div>
+                </div>
+
+                <!-- Featured Laptop -->
+                <div class="product-card rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800" alt="High End Laptop" class="product-img">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Premium Computing</h3>
+                        <p class="text-zinc-400 text-sm">From MacBook Pro to custom RTX gaming rigs, we have it all.</p>
+                        <button onclick="showPage('laptops')" class="mt-4 text-sm uppercase font-bold tracking-widest text-blue-400 hover:text-white transition">Explore Laptops</button>
+                    </div>
+                </div>
+
+                <!-- Featured Console -->
+                <div class="product-card rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&q=80&w=800" alt="PlayStation 5" class="product-img">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Gaming Consoles</h3>
+                        <p class="text-zinc-400 text-sm">PlayStation 5 Slim and Pro models available for elite gaming.</p>
+                        <button onclick="showPage('playstations')" class="mt-4 text-sm uppercase font-bold tracking-widest text-blue-400 hover:text-white transition">Explore Consoles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card p-10 rounded-2xl bg-zinc-900">
+                <h3 class="text-2xl oswald mb-4">Why Choose GQP?</h3>
+                <p class="text-zinc-400 leading-relaxed text-lg">
+                    At GQP (Great Quality Products), we don't just sell electronics; we provide tools for your lifestyle and professional needs. Every product in our inventory undergoes rigorous quality checks to ensure you receive nothing but the best.
+                </p>
+            </div>
+        </section>
+
+        <!-- Laptops Page -->
+        <section id="laptops" class="page-content">
+            <h2 class="text-3xl oswald mb-8">Laptops & PCs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800" class="product-img">
+                    <div class="p-4">
+                        <h4 class="font-bold">MacBook Pro M3 Max</h4>
+                        <p class="text-zinc-500 text-sm">Space Black | 32GB Unified Memory</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&q=80&w=800" class="product-img">
+                    <div class="p-4">
+                        <h4 class="font-bold">Alienware Gaming PC</h4>
+                        <p class="text-zinc-500 text-sm">RTX 4090 | 2TB SSD | Liquid Cooled</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playstations Page -->
+        <section id="playstations" class="page-content">
+            <h2 class="text-3xl oswald mb-8">Playstaions</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&q=80&w=800" class="product-img">
+                    <div class="p-4">
+                        <h4 class="font-bold">PS5 Slim Disc Edition</h4>
+                        <p class="text-zinc-500 text-sm">White | DualSense Controller Included</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&q=80&w=800" class="product-img">
+                    <div class="p-4">
+                        <h4 class="font-bold">PS5 Pro Console</h4>
+                        <p class="text-zinc-500 text-sm">Enhanced Performance | 2TB Storage</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Iphones Page -->
+        <section id="iphones" class="page-content">
+            <h2 class="text-3xl oswald mb-8">Iphones</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&q=80&w=800" class="product-img">
+                    <div class="p-4">
+                        <h4 class="font-bold">iPhone 17 Pro Max</h4>
+                        <p class="text-zinc-500 text-sm">Natural Titanium | 512GB</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&q=80&w=800" class="product-img">
+                    <div class="p-4">
+                        <h4 class="font-bold">iPhone 17 Pro</h4>
+                        <p class="text-zinc-500 text-sm">Black Titanium | 256GB</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Order Page -->
+        <section id="custom" class="page-content">
+            <h2 class="text-3xl oswald mb-8">Custom Orders</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="product-card p-10 rounded-3xl text-center">
+                    <h3 class="text-xl oswald mb-6">Telegram Contact</h3>
+                    <div class="qr-container mb-6">
+                        <!-- Placeholder for the QR Code image provided -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://t.me/GQP11" alt="Telegram QR Code" class="mx-auto rounded-lg">
+                    </div>
+                    <p class="text-lg font-bold mb-2">@GQP11</p>
+                    <p class="text-zinc-400">For custom orders, scan this QR code and DM us on Telegram for immediate assistance.</p>
+                </div>
+
+                <div class="product-card p-8 rounded-xl border-zinc-700">
+                    <h3 class="text-xl oswald mb-6">Direct Inquiry Form</h3>
+                    <form id="customOrderForm" onsubmit="handleForm(event)">
+                        <div class="mb-4">
+                            <label class="block text-sm mb-2 uppercase oswald tracking-wider">Full Name</label>
+                            <input type="text" required class="w-full bg-black border border-zinc-700 p-3 rounded-sm focus:border-blue-500 outline-none transition">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm mb-2 uppercase oswald tracking-wider">Product Specs Needed</label>
+                            <textarea required placeholder="e.g. MacBook Pro, M3 Max, 64GB RAM..." class="w-full bg-black border border-zinc-700 p-3 rounded-sm h-32 focus:border-blue-500 outline-none transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-white text-black font-bold py-3 px-8 hover:bg-zinc-300 transition uppercase oswald">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-zinc-900 text-center text-zinc-600 text-sm mt-20">
+        <div class="oswald tracking-widest mb-4 text-zinc-400 text-lg">GQP</div>
+        <div class="flex justify-center gap-6 mb-6 text-xl">
+            <a href="#" class="hover:text-white transition"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>&copy; 2026 Great Quality Products. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav');
+                if(link.textContent.toLowerCase().replace('/', '').includes(pageId.substring(0,3))) {
+                    link.classList.add('active-nav');
+                }
+                if(pageId === 'home' && link.textContent === 'Home') link.classList.add('active-nav');
+            });
+            
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 400, behavior: 'smooth' });
+            }
+
+            if(window.innerWidth < 768) {
+                const menu = document.getElementById('nav-menu');
+                menu.classList.add('hidden');
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex', 'flex-col', 'absolute', 'top-20', 'right-6', 'bg-zinc-900', 'p-6', 'rounded-lg', 'border', 'border-zinc-800', 'z-50', 'w-64');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex', 'flex-col', 'absolute', 'top-20', 'right-6', 'bg-zinc-900', 'p-6', 'rounded-lg', 'border', 'border-zinc-800', 'z-50', 'w-64');
+            }
+        }
+
+        function handleForm(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.textContent = "SENDING...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert('Request logged! For faster response, please use the Telegram QR code.');
+                e.target.reset();
+                btn.textContent = "SUBMIT REQUEST";
+                btn.disabled = false;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
